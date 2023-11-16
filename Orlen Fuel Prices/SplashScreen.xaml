@@ -1,0 +1,12 @@
+﻿<Window x:Class="Orlen_Fuel_Prices.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        Title="Orlen Fuel Prices" Height="450" Width="799" WindowStartupLocation="CenterScreen" Icon="/crude-oil.png" ResizeMode="CanMinimize" WindowStyle="SingleBorderWindow">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid>
+        <Image gif:ImageBehavior.AnimatedSource="/splashscreen.gif" />
+    </Grid>
+</Window>

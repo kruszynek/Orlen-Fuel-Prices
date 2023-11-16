@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
-
+using System.Threading;
+using System.Windows.Media.Imaging;
 
 namespace Orlen_Fuel_Prices
 {
@@ -17,20 +18,26 @@ namespace Orlen_Fuel_Prices
         private TaskbarIcon notifyIcon;
         private DispatcherTimer timer;
         private DataScraper dataScraper;
+        private SplashScreen splashScreen;
 
 
 
         public MainWindow()
         {
+            splashScreen = new SplashScreen();
+            splashScreen.Show();
+            this.Hide();
             this.dataScraper = new DataScraper(this);
             InitializeComponent();
             TenMinuteTimer();
             SetupNotifyIcon();
             ScrapedataAsync();
-
+            
             DateText.Text = "Pobieranie danych...";
+            
+            
         }
-
+        
         private void SetupNotifyIcon()
         {
             notifyIcon = new TaskbarIcon();
@@ -92,6 +99,13 @@ namespace Orlen_Fuel_Prices
             {
                 Scrapedata();
             });
+            Dispatcher.Invoke(() =>
+            splashScreen.Close()
+            
+            ) ;
+
+            this.Show();
+
         }
         private void Scrapedata()
         {
