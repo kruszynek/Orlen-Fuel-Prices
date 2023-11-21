@@ -43,7 +43,6 @@ namespace Orlen_Fuel_Prices
             notifyIcon = new TaskbarIcon();
             notifyIcon.Visibility = Visibility.Visible;
             notifyIcon.Icon = new System.Drawing.Icon("crude-oil.ico");
-
             notifyIcon.ToolTipText = "Orlen Fuel Prices\n" + "Left click to show prices. " + "Double left click to open app";
             notifyIcon.TrayMouseDoubleClick += NotifyIcon_DoubleClick;
             notifyIcon.TrayLeftMouseUp += NotifyIcon_LeftClick;
