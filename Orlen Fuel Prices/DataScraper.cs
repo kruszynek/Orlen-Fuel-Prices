@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,7 +39,15 @@ namespace Orlen_Fuel_Prices
                 driver.Navigate().GoToUrl(url);
                 try
                 {
-                    Thread.Sleep(5000);
+                    try
+                    {
+                        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                        wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Wystąpił błąd.");
+                    }
                     IWebElement dateElement = driver.FindElement(By.XPath("//p[@class='hcp__content-date']/STRONG"));
                     Debug.WriteLine("Connection Status:  Connection went sucsessfully");
                     if (dateElement != null)
