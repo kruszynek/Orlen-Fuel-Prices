@@ -39,15 +39,7 @@ namespace Orlen_Fuel_Prices
                 driver.Navigate().GoToUrl(url);
                 try
                 {
-                    try
-                    {
-                        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                        wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Wystąpił błąd.");
-                    }
+                    Thread.Sleep(5000);
                     IWebElement dateElement = driver.FindElement(By.XPath("//p[@class='hcp__content-date']/STRONG"));
                     Debug.WriteLine("Connection Status:  Connection went sucsessfully");
                     if (dateElement != null)
