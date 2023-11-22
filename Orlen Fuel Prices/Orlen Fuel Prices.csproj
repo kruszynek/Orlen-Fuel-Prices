@@ -6,12 +6,18 @@
     <RootNamespace>Orlen_Fuel_Prices</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>bin\Debug\net6.0-windows\crude-oil.ico</ApplicationIcon>
+    <ApplicationIcon>crude-oil.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="crude-oil.png" />
     <None Remove="splashscreen.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="crude-oil.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

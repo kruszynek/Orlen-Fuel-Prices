@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 using System.Threading;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Orlen_Fuel_Prices
 {
@@ -42,7 +43,8 @@ namespace Orlen_Fuel_Prices
         {
             notifyIcon = new TaskbarIcon();
             notifyIcon.Visibility = Visibility.Visible;
-            notifyIcon.Icon = new System.Drawing.Icon("crude-oil.ico");
+            string iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "crude-oil.ico");
+            notifyIcon.Icon = new System.Drawing.Icon(iconPath);
             notifyIcon.ToolTipText = "Orlen Fuel Prices\n" + "Left click to show prices. " + "Double left click to open app";
             notifyIcon.TrayMouseDoubleClick += NotifyIcon_DoubleClick;
             notifyIcon.TrayLeftMouseUp += NotifyIcon_LeftClick;
