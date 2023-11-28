@@ -19,6 +19,7 @@
 
         <StackPanel x:Name="RowsStackPanel" Margin="10,10,10,10" Grid.Row="1" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="DateText" TextWrapping="Wrap" FontSize="20" Foreground="Black" FontWeight="Bold" Margin="10,10,10,10" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="TrayCheckbox" Content="Hide in tray when minimalised" Margin="616,1,0,387" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

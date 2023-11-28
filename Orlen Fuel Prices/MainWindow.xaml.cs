@@ -10,6 +10,7 @@ using System.Windows.Threading;
 using System.Threading;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Windows.Input;
 
 namespace Orlen_Fuel_Prices
 {
@@ -48,6 +49,7 @@ namespace Orlen_Fuel_Prices
             notifyIcon.ToolTipText = "Orlen Fuel Prices\n" + "Left click to show prices. " + "Double left click to open app";
             notifyIcon.TrayMouseDoubleClick += NotifyIcon_DoubleClick;
             notifyIcon.TrayLeftMouseUp += NotifyIcon_LeftClick;
+            
 
 
         }
@@ -61,6 +63,7 @@ namespace Orlen_Fuel_Prices
                 DateText.Visibility = Visibility.Visible;
                 DateText.Text = "Aktualizacja w toku..";
                 ScrapedataAsync();
+                timer.Start();
             };
             timer.Start();
 
@@ -68,8 +71,6 @@ namespace Orlen_Fuel_Prices
 
 
         }
-
-        string scrapedDataAsString;
         private void NotifyIcon_LeftClick(object sender, RoutedEventArgs e)
         {
 
@@ -91,9 +92,6 @@ namespace Orlen_Fuel_Prices
             this.Show();
             this.WindowState = WindowState.Normal;
         }
-
-
-
         private async Task ScrapedataAsync()
         {
             await Task.Run(() =>
@@ -120,7 +118,10 @@ namespace Orlen_Fuel_Prices
         protected override void OnStateChanged(EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
-                this.Hide();
+                if ((bool)TrayCheckbox.IsChecked)
+                {
+                    this.Hide();
+                }
             base.OnStateChanged(e);
         }
     }

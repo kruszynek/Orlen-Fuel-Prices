@@ -8,13 +8,12 @@ using System.Windows.Media;
 public class CustomBalloon : UserControl
 {
     private TaskbarIcon taskbarIcon;
+
     public CustomBalloon(List<string> messages, TaskbarIcon taskbarIcon)
     {
         InitializeComponent();
 
-
         this.taskbarIcon = taskbarIcon;
-
 
         for (int i = 0; i < messages.Count; i++)
         {
@@ -35,6 +34,9 @@ public class CustomBalloon : UserControl
 
         MouseLeftButtonDown += CustomBalloon_MouseLeftButtonDown;
     }
+        
+        
+    
 
     private TextBlock CreateMessageTextBlock(string message)
     {
@@ -47,7 +49,6 @@ public class CustomBalloon : UserControl
             Foreground = Brushes.Black,
             Text = message
         };
-
 
         return messageTextBlock;
     }
@@ -65,14 +66,11 @@ public class CustomBalloon : UserControl
             Child = grid
         };
         Content = balloonBorder;
-
-
     }
 
     private void CustomBalloon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         taskbarIcon?.CloseBalloon();
     }
-
     private Grid grid;
 }
